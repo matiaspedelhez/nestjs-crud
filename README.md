@@ -1,4 +1,4 @@
-# nestjs-crud-test
+# nestjs-crud
 
 NestJS HTTP microservice for job application test.
 
