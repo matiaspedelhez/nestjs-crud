@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # nestjs setup
+  nestjs-app:
+    build: ./nestjs-app
+    container_name: nestjs-container
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+    environment:
+      DB_HOST: mongodb
+      DB_PORT: 27017
+      DB_USERNAME: nest
+      DB_PASSWORD: password
+      DB_DATABASE: productsdb
+
+  # mongodb setup
+  mongodb:
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile
+    container_name: mongodb-container
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: root-db
+
+  # cleanup db - only runs when called separetely
+  cleanup:
+    image: busybox:latest
+    volumes:
+      - mongodb_data:/data/db
+    command: sh -c "rm -rf /data/db/*"
+    entrypoint: [ "true" ]
+
+volumes:
+  mongodb_data:
+    driver: local
