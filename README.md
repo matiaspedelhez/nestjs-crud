@@ -35,10 +35,10 @@ sudo docker compose up
 - **Method**: `POST`
 - **Request Body**:
 
-```json
+```js
 {
-  "name": "Product Name",
-  "stock": 10
+  "name": "Product Name", // <string> - required
+  "stock": 10 // <number> - required
 }
 ```
 
