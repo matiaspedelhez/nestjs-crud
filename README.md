@@ -57,7 +57,7 @@ sudo docker compose up
 - **URL**: `/products`
 - **Method**: `PATCH`
 
-```json
+```js
 {
   "name": "Product Name", // <string> - optional
   "stock": 10 // <number> - optional
