@@ -1,6 +1,6 @@
 # nestjs-crud
 
-NestJS HTTP microservice for job application test.
+NestJS HTTP microservice that provides a simple CRUD functionality with MongoDB integration.
 
 ## Pre-requisites
 
